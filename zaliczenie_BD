@@ -1,0 +1,24 @@
+a. 
+Select Floor( AVG(mileage)) as "średni przebieg"
+From car;
+
+b.
+Select name_model, mileage, start_date, end_date
+From Type
+left join car on type.id_type = car.id_type
+left join reservation on car.id_car = reservation.id_car
+
+c.
+Select customer.last_name, COUNT(reservation.id_customer) as "Ilość wyprzyczeń"
+From customer
+Inner join reservation on customer.id_customer = reservation.id_customer
+Group by customer.last_name
+
+
+d.
+SELECT type.name_mark, COUNT(car.id_type) 
+FROM type 
+INNER JOIN car ON type.id_type = car.id_type 
+WHERE type.name_mark = 'BMW' OR type.name_mark = 'Audi' OR type.name_mark = 'Volvo'
+GROUP BY type.name_mark
+ 
